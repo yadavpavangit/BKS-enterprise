@@ -2,9 +2,11 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { SplitText } from "gsap/all";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
   const container = useRef();
+  const navigate = useNavigate();
 
   useGSAP(
     () => {
@@ -69,7 +71,12 @@ function Hero() {
       <div className="mt-8 flex gap-4">
         <button className="hero-btn explore">Explore Products</button>
 
-        <button className="hero-btn contact">Contact Us</button>
+        <button
+          className="hero-btn contact"
+          onClick={() => navigate("/contact")}
+        >
+          Contact Us
+        </button>
       </div>
 
       {/* Bottom Water Text */}
