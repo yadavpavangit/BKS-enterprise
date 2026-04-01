@@ -32,3 +32,75 @@ export const featureProducts = [
     image: "/images/Pump.png",
   },
 ];
+
+export const servicePoints = [
+  {
+    id: 1,
+    name: "Perfect Planning",
+  },
+  {
+    id: 2,
+    name: "Professional Design",
+  },
+  {
+    id: 3,
+    name: "Furniture Design",
+  },
+  {
+    id: 4,
+    name: "Interior Design",
+  },
+  {
+    id: 5,
+    name: "Exterior Design",
+  },
+  {
+    id: 6,
+    name: "24/7 Hours Support",
+  },
+];
+
+export const plans = [
+  {
+    id: 1,
+    name: "Basic",
+    price: 99,
+    duration: "Yearly",
+    features: [
+      "General living space",
+      "Interior design advices",
+      "Complete home redesign",
+      "Modern interior planning",
+      "Kitchen design",
+    ],
+    isFeatured: false,
+  },
+  {
+    id: 2,
+    name: "Premium",
+    price: 199,
+    duration: "Yearly",
+    features: [
+      "General living space",
+      "Interior design advices",
+      "Complete home redesign",
+      "Modern interior planning",
+      "Kitchen design",
+    ],
+    isFeatured: true, // 🔥 highlight this card
+  },
+  {
+    id: 3,
+    name: "Advanced",
+    price: 299,
+    duration: "Yearly",
+    features: [
+      "General living space",
+      "Interior design advices",
+      "Complete home redesign",
+      "Modern interior planning",
+      "Kitchen design",
+    ],
+    isFeatured: false,
+  },
+];

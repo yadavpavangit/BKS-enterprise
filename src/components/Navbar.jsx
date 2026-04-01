@@ -17,7 +17,10 @@ function Navbar() {
             <NavLink to="/about">About</NavLink>
           </li>
           <li className="text-xl font-semibold">
-            <a href="#">Services</a>
+            <NavLink to="/services">Services</NavLink>
+          </li>
+          <li className="text-xl font-semibold">
+            <NavLink to="/contact">Contact</NavLink>
           </li>
         </ul>
         <button
@@ -29,7 +32,7 @@ function Navbar() {
 
         {/* MOBILE */}
         <ul
-          className={`fixed w-full h-screen bg-linear-to-r from-blue-500 to-blue-700 bottom-0 right-0 flex flex-col justify-center items-center gap-4 px-3 ${menuOpen ? "translate-y-0" : "-translate-y-full"} transition-all duration-150`}
+          className={`fixed z-99 w-full h-screen bg-linear-to-r from-blue-500 to-blue-700 bottom-0 right-0 flex flex-col justify-center items-center gap-4 px-3 ${menuOpen ? "translate-y-0" : "-translate-y-full"} transition-all duration-150`}
         >
           <button
             className="absolute top-0 left-0 text-3xl pl-4 pt-3"
@@ -48,7 +51,14 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="text-xl font-semibold">
-            <a href="#">Services</a>
+            <NavLink to="/services" onClick={() => setMenuOpen(false)}>
+              Services
+            </NavLink>
+          </li>
+          <li className="text-xl font-semibold">
+            <NavLink to="/contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </NavLink>
           </li>
         </ul>
       </nav>

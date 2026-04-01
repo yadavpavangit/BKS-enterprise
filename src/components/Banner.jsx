@@ -10,18 +10,18 @@ function Banner({ title }) {
         alt=""
         className="w-full h-full object-cover object-center"
       />
-      <div className="w-full px-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-20">
-        <div className="flex justify-between items-center">
-          <h2 className="text-5xl font-bold">{title}</h2>
+      <div className="w-full px-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
+        <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
+          <h2 className="text-2xl md:text-5xl font-bold">{title}</h2>
           <div className="font-poppins flex items-center gap-2">
             <NavLink
               to={"/"}
-              className="font-bold text-xl text-red-500 hover:text-red-700 transition-colors duration-150 ease-in"
+              className="font-bold text-red-500 hover:text-red-700 transition-colors duration-150 ease-in"
             >
               Home
-            </NavLink>{" "}
+            </NavLink>
             <MdDoubleArrow />
-            <span className="text-xl font-bold">{title}</span>
+            <span className="text-lg font-bold">{title}</span>
           </div>
         </div>
       </div>

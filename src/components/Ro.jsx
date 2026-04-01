@@ -62,7 +62,7 @@ function Ro() {
       <div className="absolute w-[400px] h-[400px] bg-white/10 blur-3xl rounded-full top-20" />
 
       {/* Image */}
-      <div className="content absolute bottom-10 md:bottom-0 flex justify-center w-full">
+      <div className="content absolute bottom-10 md:-bottom-30 flex justify-center w-full">
         <img
           src="/images/ro.png"
           alt="RO"
@@ -71,7 +71,7 @@ function Ro() {
       </div>
 
       {/* Brand Name */}
-      <div className="absolute bottom-24 md:bottom-10 text-center">
+      <div className="absolute bottom-24 md:bottom-50 text-center">
         <span className="text-bks text-2xl md:text-6xl font-extrabold tracking-widest">
           BSK Enterprise
         </span>
