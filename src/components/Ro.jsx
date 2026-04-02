@@ -66,7 +66,7 @@ function Ro() {
         <img
           src="/images/ro.png"
           alt="RO"
-          className="ro-img w-64 md:w-96 object-contain scale-[1.6]"
+          className="ro-img w-24 md:w-96 object-contain scale-[1.6]"
         />
       </div>
 

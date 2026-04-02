@@ -69,7 +69,12 @@ function Hero() {
 
       {/* Buttons */}
       <div className="mt-8 flex gap-4">
-        <button className="hero-btn explore">Explore Products</button>
+        <button
+          className="hero-btn explore"
+          onClick={() => navigate("/products")}
+        >
+          Explore Products
+        </button>
 
         <button
           className="hero-btn contact"

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { CiMenuFries } from "react-icons/ci";
+import { IoClose } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
@@ -9,7 +11,7 @@ function Navbar() {
         <h3 className="font-brand font-bold bg-linear-to-r from-blue-600 via-white to-indigo-500 bg-clip-text text-transparent text-5xl">
           BKS
         </h3>
-        <ul className="hidden sm:flex gap-4 font-source">
+        <ul className="hidden sm:flex gap-10 font-source">
           <li className="text-xl font-semibold">
             <NavLink to="/">Home</NavLink>
           </li>
@@ -27,7 +29,7 @@ function Navbar() {
           className="block sm:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          Menu
+          <CiMenuFries size={20} />
         </button>
 
         {/* MOBILE */}
@@ -38,7 +40,7 @@ function Navbar() {
             className="absolute top-0 left-0 text-3xl pl-4 pt-3"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            X
+            <IoClose size={40} />
           </button>
           <li className="text-xl font-semibold">
             <NavLink to="/" onClick={() => setMenuOpen(false)}>

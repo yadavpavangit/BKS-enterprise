@@ -47,7 +47,7 @@ function Plan() {
               </div>
 
               <div className="flex items-baseline justify-center mb-10">
-                <span className="text-4xl font-semibold text-gray-100">$</span>
+                <span className="text-4xl font-semibold text-gray-100">₹</span>
                 <span className="text-7xl font-bold text-[#f3274c] mx-1">
                   {plan.price}
                 </span>
