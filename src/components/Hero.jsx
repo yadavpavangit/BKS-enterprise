@@ -54,7 +54,7 @@ function Hero() {
 
       {/* Main Brand */}
       <h1 className="hero-title text-5xl md:text-7xl font-brand text-primary tracking-widest">
-        BSK
+        BKS
       </h1>
 
       {/* Subtitle */}
