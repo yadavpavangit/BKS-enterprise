@@ -68,11 +68,11 @@ function About() {
 
       <div className="w-full bg-white/20 py-10">
         <div className="flex flex-col items-center justify-center gap-4 max-w-[80rem] w-full mx-auto px-6 md:px-10">
-          <span className="text-md font-bold text-red-600">Our info</span>
+          <span className="text-md font-bold text-primary">Our info</span>
           <h2 className="text-4xl font-bold my-2 text-center">
             About Our ShoppyKart
           </h2>
-          <p className="text-xl text-center">
+          <p className="text-md text-center text-muted">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quae
             asperiores deserunt nulla laboriosam. Itaque, ducimus suscipit at
             explicabo maxime nisi rem vel dicta? Recusandae voluptatibus commodi
@@ -91,7 +91,7 @@ function About() {
 
       <div className="w-full bg-white/20 py-10">
         <div className="flex flex-col items-center justify-center gap-4 max-w-[80rem] w-full mx-auto px-6 md:px-10">
-          <span className="text-md font-bold text-red-600">OUR TEAM</span>
+          <span className="text-md font-bold text-primary">OUR TEAM</span>
           <h2 className="text-4xl font-bold my-2 text-center">
             Our Creative Team.
           </h2>
@@ -156,12 +156,12 @@ function About() {
           {stats.map((item, index) => (
             <div key={index} className="flex flex-col items-center text-center">
               <span
-                className="stat-number text-5xl font-bold text-red-600"
+                className="stat-number text-5xl font-bold text-primary"
                 data-target={item.value}
               >
                 0
               </span>
-              <p className="text-gray-400 mt-2 font-medium uppercase tracking-wider text-sm">
+              <p className="text-muted mt-2 font-medium uppercase tracking-wider text-sm">
                 {item.label}
               </p>
             </div>

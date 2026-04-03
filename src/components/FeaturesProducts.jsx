@@ -51,7 +51,7 @@ function FeaturesProducts() {
                 <span className="text-lg font-bold text-green-600">
                   ₹{product.discountPrice}
                 </span>
-                <span className="text-sm text-gray-400 line-through">
+                <span className="text-sm text-muted line-through">
                   ₹{product.price}
                 </span>
               </div>

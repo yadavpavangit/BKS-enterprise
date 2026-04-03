@@ -11,7 +11,7 @@ function Services() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#services",
-        start: "top center",
+        start: "top 80%",
       },
     });
     tl.fromTo(
@@ -50,7 +50,7 @@ function Services() {
     <section className="min-h-dvh">
       <Banner title={"Services"} />
       <div id="services" className="max-w-8xl px-6 md:px-10 py-10">
-        <h2 className="text-xl md:text-2xl text-red-600 text-center font-semibold font-source">
+        <h2 className="text-xl md:text-2xl text-primary text-center font-semibold font-source">
           Our Services
         </h2>
 
@@ -67,7 +67,7 @@ function Services() {
             <h2 className="text-start font-brand text-4xl md:text-5xl font-bold">
               Our Work Process Make Your Dream True
             </h2>
-            <p className="indent-3 text-start text-[12px] md:text-[14px] text-gray-400 font-poppins">
+            <p className="indent-3 text-start text-[12px] md:text-[14px] text-muted font-poppins">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
               aut, unde consectetur commodi voluptatibus qui at. In, numquam
               delectus vero quidem minima nam distinctio enim dignissimos

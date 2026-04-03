@@ -47,7 +47,7 @@ function Hero() {
   return (
     <section
       ref={container}
-      className="bg-dark text-light min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden"
+      className="bg-dark text-muted min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden"
     >
       {/* Glow Background */}
       <div className="absolute w-[500px] h-[500px] bg-primary/20 blur-3xl rounded-full top-20" />

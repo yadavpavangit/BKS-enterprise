@@ -11,52 +11,59 @@ function Contact() {
 
       <div className="w-full bg-white/20 py-10">
         <div className="flex flex-col items-center justify-center gap-4 max-w-[80rem] w-full mx-auto px-6 md:px-10">
-          <span className="text-md font-bold text-red-600">Our info</span>
+          <span className="text-md font-bold text-primary">Our info</span>
           <h2 className="text-4xl font-bold my-2 text-center">
             Contact with our support during emergency!
           </h2>
         </div>
-        <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-10 place-items-center">
-          <div className="flex items-center gap-2">
-            <FaLocationDot size={80} className="text-red-600" />
-            <div className="flex flex-col gap-3 max-w-80 w-full">
-              <h2 className="text-3xl font-bold font-poppins">
-                Office Address:
-              </h2>
-              <p className="text-xl text-gray-400 font-poppins">
-                Lorem ipsum, 343 ShoppyKart, #4148 Honey street, NY - 62617.
-              </p>
-            </div>
-          </div>
 
-          {/* PHONE */}
-          <div className="flex items-center gap-2">
-            <IoCallSharp size={80} className="text-red-600" />
-            <div className="flex flex-col gap-3 max-w-80 w-full">
-              <h2 className="text-3xl font-bold font-poppins">Office Phone:</h2>
-              <div>
-                <p className="text-xl text-gray-400 font-poppins mb-0.5 hover:text-red-600 transition-colors duration-150 ease-in cursor-pointer">
-                  +1(21) 234 557 4567
-                </p>
-                <p className="text-xl text-gray-400 font-poppins hover:text-red-600 transition-colors duration-150 ease-in cursor-pointer">
-                  +1(21) 234 557 4568
+        <div className="w-full py-10 px-6 md:px-10 flex justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-10 place-items-center">
+            <div className="flex items-center gap-2">
+              <FaLocationDot size={80} className="text-primary" />
+              <div className="flex flex-col gap-3 max-w-80 w-full">
+                <h2 className="text-3xl font-bold font-poppins">
+                  Office Address:
+                </h2>
+                <p className="text-xl text-muted font-poppins">
+                  Lorem ipsum, 343 ShoppyKart, #4148 Honey street, NY - 62617.
                 </p>
               </div>
             </div>
-          </div>
 
-          {/* EMAIL */}
-          <div className="flex items-center gap-2">
-            <IoMdMail size={80} className="text-red-600" />
-            <div className="flex flex-col gap-3 max-w-80 w-full">
-              <h2 className="text-3xl font-bold font-poppins">Office Mail:</h2>
-              <div>
-                <p className="text-xl text-gray-400 font-poppins mb-0.5 hover:text-red-600 transition-colors duration-150 ease-in cursor-pointer">
-                  support@mail.com
-                </p>
-                <p className="text-xl text-gray-400 font-poppins hover:text-red-600 transition-colors duration-150 ease-in cursor-pointer">
-                  contact@mail.com
-                </p>
+            {/* PHONE */}
+            <div className="flex items-center gap-2">
+              <IoCallSharp size={80} className="text-primary" />
+              <div className="flex flex-col gap-3 max-w-80 w-full">
+                <h2 className="text-3xl font-bold font-poppins">
+                  Office Phone:
+                </h2>
+                <div>
+                  <p className="text-xl text-muted font-poppins mb-0.5 hover:text-primary transition-colors duration-150 ease-in cursor-pointer">
+                    +1(21) 234 557 4567
+                  </p>
+                  <p className="text-xl text-muted font-poppins hover:text-primary transition-colors duration-150 ease-in cursor-pointer">
+                    +1(21) 234 557 4568
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* EMAIL */}
+            <div className="flex items-center gap-2">
+              <IoMdMail size={80} className="text-primary" />
+              <div className="flex flex-col gap-3 max-w-80 w-full">
+                <h2 className="text-3xl font-bold font-poppins">
+                  Office Mail:
+                </h2>
+                <div>
+                  <p className="text-xl text-muted font-poppins mb-0.5 hover:text-primary transition-colors duration-150 ease-in cursor-pointer">
+                    support@mail.com
+                  </p>
+                  <p className="text-xl text-muted font-poppins hover:text-primary transition-colors duration-150 ease-in cursor-pointer">
+                    contact@mail.com
+                  </p>
+                </div>
               </div>
             </div>
           </div>

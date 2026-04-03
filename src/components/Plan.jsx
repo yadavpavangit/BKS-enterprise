@@ -28,7 +28,7 @@ function Plan() {
     <div id="plans" className="w-full pt-20 px-6 flex justify-center bg-black">
       <div className="w-full max-w-6xl">
         {/* Heading */}
-        <h2 className="text-red-600 text-center font-semibold text-xl">
+        <h2 className="text-primary text-center font-semibold text-xl">
           Our Plans
         </h2>
         <h1 className="text-white text-center text-4xl font-bold my-6">
@@ -42,7 +42,7 @@ function Plan() {
               key={plan.id}
               className="bg-white/20 rounded-lg p-8 text-center shadow-md hover:shadow-xl transition flex flex-col justify-between"
             >
-              <div className="w-full bg-[#f3274c] text-white font-bold py-3 rounded-md text-center text-lg mb-8">
+              <div className="w-full bg-accent text-white font-bold py-3 rounded-md text-center text-lg mb-8">
                 {plan.name}
               </div>
 
