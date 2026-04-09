@@ -9,63 +9,71 @@ function Contact() {
     <section className="min-h-dvh">
       <Banner title={"Contact"} />
 
-      <div className="w-full bg-white/20 py-10">
-        <div className="flex flex-col items-center justify-center gap-4 max-w-[80rem] w-full mx-auto px-6 md:px-10">
-          <span className="text-md font-bold text-primary">Our info</span>
-          <h2 className="text-4xl font-bold my-2 text-center">
-            Contact with our support during emergency!
+      <div className="w-full bg-gradient-to-b from-gray-100 to-white py-20">
+        {/* Heading */}
+        <div className="flex flex-col items-center justify-center gap-4 max-w-4xl mx-auto px-6 text-center">
+          <span className="text-sm font-semibold text-accent uppercase tracking-wider">
+            Our Info
+          </span>
+
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 leading-tight">
+            Contact with our support <br className="hidden md:block" />
+            during emergency!
           </h2>
+
+          <p className="text-gray-500 text-sm md:text-base max-w-xl">
+            We are here to help you 24/7. Reach out to us anytime for support,
+            inquiries, or assistance.
+          </p>
         </div>
 
-        <div className="w-full py-10 px-6 md:px-10 flex justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-10 place-items-center">
-            <div className="flex items-center gap-2">
-              <FaLocationDot size={80} className="text-primary" />
-              <div className="flex flex-col gap-3 max-w-80 w-full">
-                <h2 className="text-3xl font-bold font-poppins">
-                  Office Address:
-                </h2>
-                <p className="text-xl text-muted font-poppins">
-                  Lorem ipsum, 343 ShoppyKart, #4148 Honey street, NY - 62617.
-                </p>
-              </div>
-            </div>
+        {/* Cards */}
+        <div className="w-full mt-16 px-6 md:px-10 flex justify-center">
+          <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {/* CARD */}
+            {[
+              {
+                icon: <FaLocationDot size={26} />,
+                title: "Office Address",
+                desc: ["343 ShoppyKart,", "#4148 Honey street, NY - 62617"],
+              },
+              {
+                icon: <IoCallSharp size={26} />,
+                title: "Office Phone",
+                desc: ["+1 (21) 234 557 4567", "+1 (21) 234 557 4568"],
+              },
+              {
+                icon: <IoMdMail size={26} />,
+                title: "Office Mail",
+                desc: ["support@mail.com", "contact@mail.com"],
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 flex items-start gap-4 border border-transparent hover:border-red-100"
+              >
+                {/* Icon */}
+                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-red-100 text-accent group-hover:bg-accent group-hover:text-white transition duration-300">
+                  {item.icon}
+                </div>
 
-            {/* PHONE */}
-            <div className="flex items-center gap-2">
-              <IoCallSharp size={80} className="text-primary" />
-              <div className="flex flex-col gap-3 max-w-80 w-full">
-                <h2 className="text-3xl font-bold font-poppins">
-                  Office Phone:
-                </h2>
-                <div>
-                  <p className="text-xl text-muted font-poppins mb-0.5 hover:text-primary transition-colors duration-150 ease-in cursor-pointer">
-                    +1(21) 234 557 4567
-                  </p>
-                  <p className="text-xl text-muted font-poppins hover:text-primary transition-colors duration-150 ease-in cursor-pointer">
-                    +1(21) 234 557 4568
-                  </p>
+                {/* Content */}
+                <div className="flex flex-col gap-2">
+                  <h2 className="text-lg font-bold text-gray-800">
+                    {item.title}
+                  </h2>
+
+                  {item.desc.map((text, i) => (
+                    <p
+                      key={i}
+                      className="text-gray-500 text-sm hover:text-accent cursor-pointer transition"
+                    >
+                      {text}
+                    </p>
+                  ))}
                 </div>
               </div>
-            </div>
-
-            {/* EMAIL */}
-            <div className="flex items-center gap-2">
-              <IoMdMail size={80} className="text-primary" />
-              <div className="flex flex-col gap-3 max-w-80 w-full">
-                <h2 className="text-3xl font-bold font-poppins">
-                  Office Mail:
-                </h2>
-                <div>
-                  <p className="text-xl text-muted font-poppins mb-0.5 hover:text-primary transition-colors duration-150 ease-in cursor-pointer">
-                    support@mail.com
-                  </p>
-                  <p className="text-xl text-muted font-poppins hover:text-primary transition-colors duration-150 ease-in cursor-pointer">
-                    contact@mail.com
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -81,12 +89,12 @@ function Contact() {
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition"
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition"
             />
           </div>
 
@@ -95,12 +103,12 @@ function Contact() {
             <input
               type="tel"
               placeholder="Your Phone"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition"
             />
             <input
               type="text"
               placeholder="Subject"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition"
             />
           </div>
 
@@ -108,7 +116,7 @@ function Contact() {
           <textarea
             placeholder="Your Message"
             rows={5}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 transition resize-none"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition resize-none"
           />
 
           {/* Button */}

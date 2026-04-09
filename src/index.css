@@ -50,9 +50,9 @@ body {
 
 @layer components {
   .explore {
-    @apply bg-accent px-6 py-3 rounded-lg text-light hover:opacity-90 transition-colors duration-150;
+    @apply bg-accent px-6 py-3 rounded-lg text-light cursor-pointer hover:opacity-90 transition-colors duration-150;
   }
   .contact {
-    @apply border border-primary px-6 py-3 rounded-lg text-primary hover:bg-primary hover:text-light transition-colors duration-150;
+    @apply border border-primary px-6 py-3 rounded-lg text-primary cursor-pointer hover:bg-primary hover:text-light transition-colors duration-150;
   }
 }
