@@ -8,6 +8,7 @@ import Home from "./pages/Home.jsx";
 import Contact from "./pages/Contact.jsx";
 import Services from "./pages/Services.jsx";
 import Products from "./pages/Products.jsx";
+import ProductsCreate from "./pages/ProductsCreate.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <Products />,
+      },
+      {
+        path: "add-products",
+        element: <ProductsCreate />,
       },
     ],
   },
