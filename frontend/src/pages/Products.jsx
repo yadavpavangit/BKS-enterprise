@@ -1,8 +1,22 @@
-import React from "react";
-import { featureProducts } from "../constans";
+import { useState, useEffect } from "react";
+// import { featureProducts } from "../constans";
 import { FaStar } from "react-icons/fa";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Products() {
+  const [products, setProducts] = useState([]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchProducts = async () => {
+      let res = await axios.get(
+        "http://localhost:5000/api/products/get_products",
+      );
+      setProducts(res.data);
+    };
+    fetchProducts();
+  }, []);
   return (
     <section className="w-full min-h-screen bg-gray-100 py-12 px-6 md:px-10">
       {/* Heading */}
@@ -15,9 +29,10 @@ function Products() {
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
-        {featureProducts.map((product) => (
+        {products.map((product) => (
           <div
-            key={product.id}
+            onClick={() => navigate(`/products/${product._id}`)}
+            key={product._id}
             className="w-full max-w-xs bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden group"
           >
             {/* Image */}
@@ -32,9 +47,9 @@ function Products() {
             {/* Content */}
             <div className="p-4 flex flex-col gap-2">
               {/* Category */}
-              <span className="text-xs text-gray-400 uppercase">
+              {/* <span className="text-xs text-gray-400 uppercase">
                 {product.category || "Category"}
-              </span>
+              </span> */}
 
               {/* Name */}
               <h3 className="text-lg font-semibold text-gray-800 line-clamp-1">
@@ -42,14 +57,14 @@ function Products() {
               </h3>
 
               {/* Rating */}
-              <div className="flex items-center gap-1 text-yellow-500 text-sm">
+              {/* <div className="flex items-center gap-1 text-yellow-500 text-sm">
                 <FaStar />
                 <FaStar />
                 <FaStar />
                 <FaStar />
                 <FaStar className="text-gray-300" />
                 <span className="text-gray-500 ml-2">(4.0)</span>
-              </div>
+              </div> */}
 
               {/* Price */}
               <div className="flex items-center justify-between mt-2">

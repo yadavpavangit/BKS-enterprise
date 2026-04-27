@@ -14,4 +14,7 @@ router.post(
   authController.addProducts,
 );
 
+router.get("/get_products", authController.getProducts);
+router.get("/:id", authController.getProductById);
+
 export default router;

@@ -9,6 +9,8 @@ import Contact from "./pages/Contact.jsx";
 import Services from "./pages/Services.jsx";
 import Products from "./pages/Products.jsx";
 import ProductsCreate from "./pages/ProductsCreate.jsx";
+import Admin from "./AdminDasboard/Admin.jsx";
+import ProductDetails from "./pages/ProductDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +38,12 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "add-products",
-        element: <ProductsCreate />,
+        path: "products/:id",
+        element: <ProductDetails />,
+      },
+      {
+        path: "myAdmin",
+        element: <Admin />,
       },
     ],
   },
