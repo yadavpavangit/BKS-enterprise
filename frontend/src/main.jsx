@@ -8,9 +8,11 @@ import Home from "./pages/Home.jsx";
 import Contact from "./pages/Contact.jsx";
 import Services from "./pages/Services.jsx";
 import Products from "./pages/Products.jsx";
-import ProductsCreate from "./pages/ProductsCreate.jsx";
+import ProductsCreate from "./AdminDasboard/pages/ProductsCreate.jsx";
 import Admin from "./AdminDasboard/Admin.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
+import { Provider } from "react-redux";
+import store from "./redux/store.js";
 
 const router = createBrowserRouter([
   {
@@ -45,12 +47,20 @@ const router = createBrowserRouter([
         path: "myAdmin",
         element: <Admin />,
       },
+      {
+        path: "product-create",
+        element: <ProductsCreate />,
+      },
+      {
+        path: "all-products",
+        element: <ProductsCreate />,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </StrictMode>,
+  </Provider>,
 );

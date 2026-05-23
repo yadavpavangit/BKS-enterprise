@@ -2,10 +2,10 @@ import { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
-import { PiTrolleyFill } from "react-icons/pi";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="overflow-hidden text-white px-10 py-2 bg-linear-to-r from-blue-700 to-blue-600">
       <nav className="flex items-center justify-between">
@@ -37,7 +37,6 @@ function Navbar() {
           >
             <CiMenuFries size={20} />
           </button>
-          <PiTrolleyFill />
 
           {/* MOBILE */}
           <ul

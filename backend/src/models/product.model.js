@@ -9,6 +9,10 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  imageFileId: {
+    type: String,
+    required: true,
+  },
 
   description: {
     type: String,

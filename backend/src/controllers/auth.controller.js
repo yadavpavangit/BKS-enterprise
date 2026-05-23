@@ -1,5 +1,6 @@
 import Product from "../models/product.model.js";
-import uploadImage from "../service/storage.service.js";
+
+import { uploadImage, deleteImage } from "../service/storage.service.js";
 
 const addProducts = async (req, res) => {
   try {
@@ -17,10 +18,15 @@ const addProducts = async (req, res) => {
     const newProduct = await Product.create({
       name,
       image: image.url,
+      imageFileId: image.fileId,
       description,
       price,
     });
-    res.status(201).json({ message: "Product added successfully" });
+    return res.status(201).json({
+      success: true,
+      message: "Product added successfully",
+      product: newProduct,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -30,7 +36,11 @@ const addProducts = async (req, res) => {
 const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
-    res.status(200).json(products);
+    return res.status(200).json({
+      success: true,
+      count: products.length,
+      products,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -50,4 +60,31 @@ const getProductById = async (req, res) => {
   }
 };
 
-export default { addProducts, getProducts, getProductById };
+const deleteProduct = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({ message: "product Not found" });
+    }
+
+    await deleteImage(product.imageFileId);
+
+    await Product.findByIdAndDelete(req.params.id);
+
+    return res.status(200).json({
+      success: true,
+      message: "Product deleted successfully",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "server error" });
+  }
+};
+
+export default {
+  addProducts,
+  getProducts,
+  getProductById,
+  deleteProduct,
+};

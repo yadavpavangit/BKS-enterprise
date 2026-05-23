@@ -8,13 +8,10 @@ const upload = multer({
   storage: multer.memoryStorage(),
 });
 
-router.post(
-  "/add_products",
-  upload.single("image"),
-  authController.addProducts,
-);
+router.post("/", upload.single("image"), authController.addProducts);
 
-router.get("/get_products", authController.getProducts);
+router.get("/", authController.getProducts);
 router.get("/:id", authController.getProductById);
+router.delete("/:id", authController.deleteProduct);
 
 export default router;

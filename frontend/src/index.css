@@ -50,10 +50,10 @@ body {
 
 @layer components {
   input {
-    @apply focus:outline-none border border-primary rounded;
+    @apply focus:outline-none border border-primary rounded text-black;
   }
   textarea {
-    @apply focus:outline-none border border-primary rounded;
+    @apply focus:outline-none border border-primary rounded text-black;
   }
   .inputClass {
     @apply w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-400;

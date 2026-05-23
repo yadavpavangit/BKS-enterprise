@@ -21,6 +21,57 @@ function About() {
 
   useGSAP(
     () => {
+      // ABOUT SECTION ANIMATION
+      gsap.fromTo(
+        "#about .our-info",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.3,
+        },
+      );
+      gsap.fromTo(
+        ".info-title",
+        { opacity: 0, x: -50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.7,
+          stagger: 0.3,
+        },
+      );
+      gsap.fromTo(
+        "#about-des",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.3,
+        },
+      );
+
+      gsap.fromTo(
+        ".about-content",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "#about",
+            start: "top 75%",
+            end: "bottom bottom",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+
+      // COUNTER ANIMATION
       const counts = container.current.querySelectorAll(".stat-number");
 
       counts.forEach((el) => {
@@ -28,10 +79,13 @@ function About() {
 
         gsap.fromTo(
           el,
-          { innerText: 0 },
+          {
+            innerText: 0,
+          },
           {
             innerText: targetValue,
             duration: 2,
+            ease: "power1.out",
             snap: { innerText: 1 },
             scrollTrigger: {
               trigger: el,
@@ -63,16 +117,18 @@ function About() {
     },
   ];
   return (
-    <section className="min-h-dvh">
+    <section ref={container} className="min-h-dvh">
       <Banner title={"About Us"} />
 
-      <div className="w-full bg-white/20 py-10">
+      <div className="w-full bg-white/20 py-10" id="about">
         <div className="flex flex-col items-center justify-center gap-4 max-w-[80rem] w-full mx-auto px-6 md:px-10">
-          <span className="text-md font-bold text-primary">Our info</span>
-          <h2 className="text-4xl font-bold my-2 text-center">
+          <span className="text-md font-bold text-primary our-info">
+            Our info
+          </span>
+          <h2 className="text-4xl font-bold my-2 text-center info-title">
             About Our ShoppyKart
           </h2>
-          <p className="text-md text-center text-muted">
+          <p className="text-md text-center text-muted" id="about-des">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quae
             asperiores deserunt nulla laboriosam. Itaque, ducimus suscipit at
             explicabo maxime nisi rem vel dicta? Recusandae voluptatibus commodi
@@ -89,7 +145,7 @@ function About() {
         </div>
       </div>
 
-      <div className="w-full bg-white/20 py-10">
+      <div className="w-full bg-white/20 py-10  about-content">
         <div className="flex flex-col items-center justify-center gap-4 max-w-[80rem] w-full mx-auto px-6 md:px-10">
           <span className="text-md font-bold text-primary">OUR TEAM</span>
           <h2 className="text-4xl font-bold my-2 text-center">
@@ -151,7 +207,7 @@ function About() {
       </div>
 
       {/* COUNTING NUMBERS */}
-      <div ref={container} className="w-full bg-zinc-900 py-20 text-white">
+      <div className="w-full bg-zinc-900 py-20 text-white">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
           {stats.map((item, index) => (
             <div key={index} className="flex flex-col items-center text-center">

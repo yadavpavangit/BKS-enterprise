@@ -1,81 +1,50 @@
 import React from "react";
+import { FaCross, FaPlus } from "react-icons/fa";
+
+import { IoPulse } from "react-icons/io5";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { RiPulseLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 function Admin() {
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    axios
-      .post("http://localhost:5000/api/products/add_products", formData)
-      .then((response) => {
-        console.log(response.data);
-        navigate("/myAdmin");
-      })
-      .catch((error) => {
-        console.error("Error adding product:", error);
-      });
-  };
+
   return (
-    <section className="max-w-8xl w-full h-screen p-4">
+    <section className="max-w-8xl w-full p-4">
       <h2 className="text-2xl text-center font-bold mb-4">Admin Dashboard</h2>
 
-      <div className="w-210 mx-auto my-10 p-4 rounded-lg">
-        <form
-          className="flex justify-center items-center flex-col gap-4"
-          onSubmit={handleSubmit}
-        >
-          {/* PRODUCT NAME */}
-          <div className="w-full col-span-3 grid grid-cols-subgrid gap-2">
-            <label htmlFor="name">Product Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+      <div className="w-full mx-auto my-10 rounded-lg">
+        <div className="max-w-80 h-auto border border-white rounded-sm p-5 bg-white/90">
+          <div className="w-full flex items-center justify-center">
+            <button
+              className="bg-cyan-500 px-5 py-2 rounded-md flex items-center gap-2"
+              onClick={() => navigate("/product-create")}
+            >
+              Create Products <FaPlus />
+            </button>
           </div>
 
-          {/* PRODUCT IMAGE */}
-          <div className="w-full col-span-3 grid grid-cols-subgrid gap-2">
-            <label htmlFor="image">Product Image:</label>
-            <input
-              type="file"
-              id="image"
-              name="image"
-              className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+          <div className="mt-5 w-full">
+            {/* ALL PRODUCTS */}
+            <div className="flex max-w-40 items-center group cursor-pointer">
+              <button className="">
+                <MdKeyboardArrowRight size={30} color="blue" />
+              </button>
+              <h2 className="text-cyan-500 text-center font-medium group-hover:text-lg group-active:scale-95 transition-all duration-150 hover:text-cyan-600">
+                All Products
+              </h2>
+            </div>
+            {/* ALL PRODUCTS */}
+            {/* <div className="flex max-w-40 items-center group cursor-pointer">
+              <button className="">
+                <MdKeyboardArrowRight size={30} color="blue" />
+              </button>
+              <h2 className="text-cyan-500 text-center font-medium group-hover:text-lg group-active:scale-95 transition-all duration-150 hover:text-cyan-600">
+                All Products
+              </h2>
+            </div> */}
           </div>
-
-          {/* PRODUCT DESCRIPTION */}
-          <div className="w-full col-span-3 grid grid-cols-subgrid gap-2">
-            <label htmlFor="description">Product Description:</label>
-            <textarea
-              id="description"
-              name="description"
-              className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            ></textarea>
-          </div>
-
-          {/* PRODUCT PRICE */}
-          <div className="w-full col-span-3 grid grid-cols-subgrid gap-2">
-            <label htmlFor="price">Product Price:</label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              step="1"
-              className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
-          >
-            Add Product
-          </button>
-        </form>
+        </div>
       </div>
     </section>
   );
