@@ -125,7 +125,7 @@ function About() {
           <span className="text-md font-bold text-primary our-info">
             Our info
           </span>
-          <h2 className="text-4xl font-bold my-2 text-center info-title">
+          <h2 className="text-4xl text-white font-bold my-2 text-center info-title">
             About Our ShoppyKart
           </h2>
           <p className="text-md text-center text-muted" id="about-des">
@@ -148,7 +148,7 @@ function About() {
       <div className="w-full bg-white/20 py-10  about-content">
         <div className="flex flex-col items-center justify-center gap-4 max-w-[80rem] w-full mx-auto px-6 md:px-10">
           <span className="text-md font-bold text-primary">OUR TEAM</span>
-          <h2 className="text-4xl font-bold my-2 text-center">
+          <h2 className="text-4xl text-white font-bold my-2 text-center">
             Our Creative Team.
           </h2>
 

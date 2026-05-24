@@ -1,10 +1,58 @@
-import React from "react";
+import { useRef, useState } from "react";
 import Banner from "../components/Banner";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoCallSharp } from "react-icons/io5";
 import { IoMdMail } from "react-icons/io";
+import emailjs from "@emailjs/browser";
+import { Bounce, toast } from "react-toastify";
 
 function Contact() {
+  const formRef = useRef();
+  const [loading, setLoading] = useState(false);
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      );
+
+      toast.success("Mail sent successfully!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+
+      formRef.current.reset();
+    } catch (error) {
+      console.error(error);
+
+      toast.error("Failed to send mail!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section className="min-h-dvh">
       <Banner title={"Contact"} />
@@ -79,7 +127,11 @@ function Contact() {
       </div>
 
       <div className="w-full py-16 px-6 md:px-10 flex justify-center">
-        <form className="w-full max-w-4xl rounded-2xl shadow-lg space-y-6">
+        <form
+          className="w-full max-w-4xl rounded-2xl shadow-lg space-y-6"
+          ref={formRef}
+          onSubmit={sendEmail}
+        >
           <h2 className="text-3xl font-bold text-center text-gray-100">
             Get In Touch
           </h2>
@@ -88,11 +140,13 @@ function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
               type="text"
+              name="user_name"
               placeholder="Your Name"
               className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition"
             />
             <input
               type="email"
+              name="user_email"
               placeholder="Your Email"
               className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition"
             />
@@ -102,11 +156,13 @@ function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
               type="tel"
+              name="user_phone"
               placeholder="Your Phone"
               className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition"
             />
             <input
               type="text"
+              name="subject"
               placeholder="Subject"
               className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition"
             />
@@ -114,6 +170,7 @@ function Contact() {
 
           {/* Message */}
           <textarea
+            name="message"
             placeholder="Your Message"
             rows={5}
             className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent transition resize-none"
@@ -123,9 +180,10 @@ function Contact() {
           <div className="text-center">
             <button
               type="submit"
+              disabled={loading}
               className="bg-red-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-red-700 active:scale-95 transition duration-200 shadow-md"
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </div>
         </form>
