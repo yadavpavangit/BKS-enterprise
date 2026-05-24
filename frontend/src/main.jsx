@@ -13,6 +13,7 @@ import Admin from "./AdminDasboard/Admin.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
+import AllProducts from "./AdminDasboard/pages/AllProducts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "all-products",
-        element: <ProductsCreate />,
+        element: <AllProducts />,
       },
     ],
   },

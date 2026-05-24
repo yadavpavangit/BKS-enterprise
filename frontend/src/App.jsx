@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Footer from "./components/Footer";
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -14,6 +15,7 @@ function App() {
         <Outlet />
       </main>
       <Footer />
+      <ToastContainer />
     </>
   );
 }

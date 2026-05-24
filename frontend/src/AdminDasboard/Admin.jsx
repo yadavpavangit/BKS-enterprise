@@ -1,50 +1,87 @@
-import React from "react";
-import { FaCross, FaPlus } from "react-icons/fa";
+import React, { useState } from "react";
 
-import { IoPulse } from "react-icons/io5";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { RiPulseLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+
+import ProductsCreate from "./pages/ProductsCreate";
+import AllProducts from "./pages/AllProducts";
+import { FaBars } from "react-icons/fa";
 
 function Admin() {
-  const navigate = useNavigate();
+  const [activePage, setActivePage] = useState("dashboard");
+  const [openSidebar, setOpenSidebar] = useState(false);
+
+  const renderPage = () => {
+    switch (activePage) {
+      case "create-product":
+        return <ProductsCreate />;
+
+      case "all-products":
+        return <AllProducts />;
+
+      default:
+        return (
+          <div className="flex flex-col gap-4">
+            <h1 className="text-4xl font-bold text-dark">Welcome Admin 👋</h1>
+
+            <p className="text-muted text-lg">
+              Manage your ecommerce application easily.
+            </p>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div className="bg-white rounded-2xl p-6 shadow-md border-l-4 border-primary">
+                <h2 className="text-muted font-medium">Total Products</h2>
+
+                <h1 className="text-4xl font-bold text-dark mt-2">120</h1>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-md border-l-4 border-secondary">
+                <h2 className="text-muted font-medium">Total Orders</h2>
+
+                <h1 className="text-4xl font-bold text-dark mt-2">85</h1>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-md border-l-4 border-accent">
+                <h2 className="text-muted font-medium">Revenue</h2>
+
+                <h1 className="text-4xl font-bold text-dark mt-2">₹45K</h1>
+              </div>
+            </div>
+          </div>
+        );
+    }
+  };
 
   return (
-    <section className="max-w-8xl w-full p-4">
-      <h2 className="text-2xl text-center font-bold mb-4">Admin Dashboard</h2>
+    <section className="min-h-screen flex bg-light">
+      {/* Sidebar */}
+      {openSidebar && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          onClick={() => setOpenSidebar(false)}
+        />
+      )}
 
-      <div className="w-full mx-auto my-10 rounded-lg">
-        <div className="max-w-80 h-auto border border-white rounded-sm p-5 bg-white/90">
-          <div className="w-full flex items-center justify-center">
-            <button
-              className="bg-cyan-500 px-5 py-2 rounded-md flex items-center gap-2"
-              onClick={() => navigate("/product-create")}
-            >
-              Create Products <FaPlus />
-            </button>
-          </div>
+      <Sidebar
+        activePage={activePage}
+        setActivePage={setActivePage}
+        openSidebar={openSidebar}
+        setOpenSidebar={setOpenSidebar}
+      />
 
-          <div className="mt-5 w-full">
-            {/* ALL PRODUCTS */}
-            <div className="flex max-w-40 items-center group cursor-pointer">
-              <button className="">
-                <MdKeyboardArrowRight size={30} color="blue" />
-              </button>
-              <h2 className="text-cyan-500 text-center font-medium group-hover:text-lg group-active:scale-95 transition-all duration-150 hover:text-cyan-600">
-                All Products
-              </h2>
-            </div>
-            {/* ALL PRODUCTS */}
-            {/* <div className="flex max-w-40 items-center group cursor-pointer">
-              <button className="">
-                <MdKeyboardArrowRight size={30} color="blue" />
-              </button>
-              <h2 className="text-cyan-500 text-center font-medium group-hover:text-lg group-active:scale-95 transition-all duration-150 hover:text-cyan-600">
-                All Products
-              </h2>
-            </div> */}
-          </div>
+      {/* Main Content */}
+      <div className="flex-1">
+        {/* MOBILE TOPBAR */}
+        <div className="lg:hidden bg-white shadow-md p-4 flex items-center">
+          <button onClick={() => setOpenSidebar(true)}>
+            <FaBars size={24} />
+          </button>
+
+          <h1 className="ml-4 text-xl font-bold">Admin Panel</h1>
         </div>
+
+        {/* PAGE CONTENT */}
+        <div className="p-4 md:p-8">{renderPage()}</div>
       </div>
     </section>
   );

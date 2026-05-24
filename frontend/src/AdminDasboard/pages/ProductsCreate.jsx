@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
+import { Bounce, toast } from "react-toastify";
 
 function ProductsCreate() {
   const navigate = useNavigate();
@@ -47,6 +48,20 @@ function ProductsCreate() {
       });
 
       console.log(response.data);
+
+      // TOASTIFY SUCCESS
+
+      toast.success("Product added successfully!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
 
       setFormData({
         image: null,

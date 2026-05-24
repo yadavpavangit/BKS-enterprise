@@ -40,12 +40,12 @@ function Contact() {
               {
                 icon: <IoCallSharp size={26} />,
                 title: "Office Phone",
-                desc: ["+1 (21) 234 557 4567", "+1 (21) 234 557 4568"],
+                desc: ["+91 799 094 3597", "+1 (21) 234 557 4568"],
               },
               {
                 icon: <IoMdMail size={26} />,
                 title: "Office Mail",
-                desc: ["support@mail.com", "contact@mail.com"],
+                desc: ["bhaveshray0808  @mail.com"],
               },
             ].map((item, index) => (
               <div
