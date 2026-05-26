@@ -3,20 +3,13 @@ import express from "express";
 import connectDB from "./src/DB/db.js";
 import cors from "cors";
 import productRouter from "./src/routers/auth.router.js";
+import controller from "./src/controllers/auth.controller.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// app.get("/", (req, res) => {
-//   res.status(200).json({
-//     success: true,
-//     message: "API Running Successfully",
-//     endpoints: {
-//       getAllProducts: "/api/products",
-//     },
-//   });
-// });
+app.get("/", controller.getProducts);
 
 app.use("/api/products", productRouter);
 connectDB();
