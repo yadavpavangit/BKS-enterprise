@@ -8,6 +8,7 @@ const upload = multer({
   storage: multer.memoryStorage(),
 });
 
+router.get("/", authController.getProducts);
 router.post("/", upload.single("image"), authController.addProducts);
 
 router.get("/:id", authController.getProductById);
