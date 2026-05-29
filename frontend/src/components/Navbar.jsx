@@ -9,9 +9,14 @@ function Navbar() {
   return (
     <header className="overflow-hidden text-white px-10 py-2 bg-linear-to-r from-blue-700 to-blue-600">
       <nav className="flex items-center justify-between">
-        <h3 className="font-brand font-bold bg-linear-to-r from-blue-600 via-white to-indigo-500 bg-clip-text text-transparent text-5xl">
+        {/* <h3 className="font-brand font-bold bg-linear-to-r from-blue-600 via-white to-indigo-500 bg-clip-text text-transparent text-5xl">
           BKS
-        </h3>
+        </h3> */}
+        <img
+          src="./favicon.png"
+          alt="Logo"
+          className="h-16 w-16 object-fit-contain"
+        />
 
         <div className="flex items-center gap-4">
           <ul className="hidden md:flex gap-7 font-source">
