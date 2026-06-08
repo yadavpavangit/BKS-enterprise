@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { addToCard } from "../redux/features/addtoCard.slice";
+import api from "../services/api";
 
 function ProductDetails() {
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchingProductData = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const res = await api.get(`/api/products/${id}`);
         setProductData(res.data);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -123,10 +120,7 @@ function ProductDetails() {
                 </div>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <button
-                  onClick={() => dispatch(addToCard(productData))}
-                  className="min-w-[160px] rounded-3xl bg-sky-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-sky-400"
-                >
+                <button className="min-w-[160px] rounded-3xl bg-sky-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-sky-400">
                   Add to cart
                 </button>
                 <button className="min-w-[160px] rounded-3xl border border-slate-700 bg-white/5 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-slate-100 transition hover:border-slate-500">
