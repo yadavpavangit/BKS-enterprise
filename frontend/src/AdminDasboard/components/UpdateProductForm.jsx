@@ -1,16 +1,38 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import api from "../../services/api";
-import { Bounce, toast } from "react-toastify";
 
-function ProductsCreate() {
+function UpdateProductForm() {
+  const fileInputRef = useRef(null);
   const navigate = useNavigate();
-  const fileInputRef = useRef();
+
+  const { id } = useParams();
+
   const [formData, setFormData] = useState({
     image: null,
     name: "",
     price: "",
     description: "",
+  });
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await api.get(`/api/products/${id}`);
+        const product = res.data;
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        toast.error("Failed to load product details. Please try again.", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
+    };
   });
 
   const handleChange = (e) => {
@@ -44,44 +66,15 @@ function ProductsCreate() {
       data.append("name", formData.name);
       data.append("price", formData.price);
       data.append("description", formData.description);
-
-      const response = await api.post(`/api/products/`, data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      console.log(response.data);
-
-      // TOASTIFY SUCCESS
-
-      toast.success("Product added successfully!", {
+    } catch (error) {
+      console.error("Error updating product:", error);
+      toast.error("Failed to update product. Please try again.", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: false,
+        closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
-      });
-
-      setFormData({
-        image: null,
-        name: "",
-        price: "",
-        description: "",
-      });
-      fileInputRef.current.value = "";
-
-      navigate("/myAdmin");
-    } catch (error) {
-      const message = error.response?.data?.message || error.message;
-      console.error("Error:", message);
-      toast.error(message, {
-        position: "top-right",
-        autoClose: 5000,
       });
     }
   };
@@ -90,7 +83,7 @@ function ProductsCreate() {
     <div className="min-h-screen flex items-center justify-center py-6 px-4">
       <div className="w-full max-w-xl bg-white shadow-lg rounded-2xl p-8">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Add Product
+          Update Product
         </h2>
 
         <form
@@ -166,7 +159,7 @@ function ProductsCreate() {
             type="submit"
             className="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg transition duration-200"
           >
-            Add Product
+            Update Product
           </button>
         </form>
       </div>
@@ -174,4 +167,4 @@ function ProductsCreate() {
   );
 }
 
-export default ProductsCreate;
+export default UpdateProductForm;

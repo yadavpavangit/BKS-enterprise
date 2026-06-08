@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 async function connectDB() {
   try {
-    // await mongoose.connect(process.env.MONGO_URI + "/bks");
-    await mongoose.connect(`${process.env.MONGO_URI}/bksEnterprise`);
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("DB connect successfully");
   } catch (error) {
     console.error("Failed to connect", error);

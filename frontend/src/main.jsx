@@ -14,6 +14,7 @@ import ProductDetails from "./pages/ProductDetails.jsx";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
 import AllProducts from "./AdminDasboard/pages/AllProducts.jsx";
+import UpdateProductForm from "./AdminDasboard/components/UpdateProductForm.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "product-create",
         element: <ProductsCreate />,
+      },
+      {
+        path: "update/:id",
+        element: <UpdateProductForm />,
       },
       {
         path: "all-products",

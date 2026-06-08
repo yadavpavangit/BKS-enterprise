@@ -4,8 +4,11 @@ import { Trash2, Package } from "lucide-react";
 import { FaTrash } from "react-icons/fa";
 import { Bounce } from "react-toastify";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+// import UpdateProductForm from "../components/UpdateProductForm";
 
 function AllProducts() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -14,13 +17,8 @@ function AllProducts() {
     const fetchProducts = async () => {
       try {
         const res = await api.get(`/api/products`);
-
-        // If backend returns array directly
-        if (Array.isArray(res.data)) {
-          setProducts(res.data);
-        }
-        // If backend returns { products: [] }
-        else if (Array.isArray(res.data.products)) {
+        console.log("Products response:", res.data);
+        if (Array.isArray(res.data.products)) {
           setProducts(res.data.products);
         } else {
           console.warn("Unexpected products response:", res.data);
@@ -68,6 +66,10 @@ function AllProducts() {
         }
       }
     });
+  };
+
+  const updateProduct = (prodId) => {
+    navigate(`/update/${prodId}`);
   };
 
   return (
@@ -140,6 +142,12 @@ function AllProducts() {
                   onClick={() => deleteProduct(product._id)}
                 >
                   Delete
+                </button>
+                <button
+                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl transition duration-300 shadow-md hover:shadow-lg"
+                  onClick={() => updateProduct(product._id)}
+                >
+                  Update
                 </button>
               </div>
             </div>
