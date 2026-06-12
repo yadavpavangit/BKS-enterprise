@@ -60,6 +60,23 @@ const getProductById = async (req, res) => {
   }
 };
 
+const searchProducts = async (req, res) => {
+  try {
+    const { query } = req.query;
+    const products = await Product.find({
+      name: { $regex: query, $options: "i" },
+    });
+    res.status(200).json({
+      success: true,
+      count: products.length,
+      products,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);

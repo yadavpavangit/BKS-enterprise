@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaSearch, FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
@@ -34,6 +34,16 @@ function Products() {
 
   return (
     <section className="w-full min-h-screen bg-gray-100 py-12 px-6 md:px-10">
+      <div>
+        <div className="flex items-center gap-3 border-2 focus:border-blue-600 border-blue-500 rounded-md p-4 mb-8">
+          <FaSearch />
+          <input
+            type="text"
+            placeholder="Search products..."
+            className="w-full border-none bg-transparent focus:outline-none text-gray-700"
+          />
+        </div>
+      </div>
       {/* Heading */}
       <div className="text-center mb-10">
         <h2 className="text-red-600 font-semibold text-xl">Our Products</h2>
