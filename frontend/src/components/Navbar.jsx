@@ -45,7 +45,7 @@ function Navbar() {
             className={`fixed inset-0 z-99 w-full h-screen bg-linear-to-r from-blue-500 to-blue-700 bottom-0 right-0 flex flex-col justify-center items-center gap-10 px-3 ${menuOpen ? "translate-y-0" : "-translate-y-full"} transition-all duration-150`}
           >
             <button
-              className="absolute top-0 left-1/2 transform -translate-x-1/2 text-3xl p-4"
+              className="absolute top-12 left-1/2 transform -translate-x-1/2 text-3xl p-4"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <IoClose size={40} />
