@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../services/api";
@@ -16,11 +16,22 @@ function UpdateProductForm() {
     description: "",
   });
 
+  // PREVIEW IMAGE STATE
+  const [previewImage, setPreviewImage] = useState("");
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const res = await api.get(`/api/products/${id}`);
         const product = res.data;
+
+        setFormData({
+          image: null,
+          name: product.name,
+          price: product.price,
+          description: product.description,
+        });
+        setPreviewImage(product.image);
       } catch (error) {
         console.error("Error fetching product:", error);
         toast.error("Failed to load product details. Please try again.", {
@@ -33,26 +44,27 @@ function UpdateProductForm() {
         });
       }
     };
-  });
+    fetchProduct();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "file" ? files[0] : value,
-    }));
+    if (type === "file") {
+      setFormData((prev) => ({ ...prev, image: files[0] }));
+      setPreviewImage(URL.createObjectURL(files[0]));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      if (
-        !formData.image ||
-        !formData.name ||
-        !formData.price ||
-        !formData.description
-      ) {
+      if (!formData.name || !formData.price || !formData.description) {
         toast.error("Please fill in all fields.", {
           position: "top-right",
           autoClose: 5000,
@@ -62,10 +74,20 @@ function UpdateProductForm() {
 
       const data = new FormData();
 
-      data.append("image", formData.image);
+      if (formData.image) {
+        data.append("image", formData.image);
+      }
       data.append("name", formData.name);
       data.append("price", formData.price);
       data.append("description", formData.description);
+
+      await api.put(`/api/products/${id}`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      toast.success("Product updated successfully");
+      navigate("/myAdmin");
     } catch (error) {
       console.error("Error updating product:", error);
       toast.error("Failed to update product. Please try again.", {
@@ -96,6 +118,13 @@ function UpdateProductForm() {
             <label htmlFor="image" className="labelClass">
               Product Image
             </label>
+            {previewImage && (
+              <img
+                src={previewImage}
+                alt="preview"
+                className="w-32 h-32 object-contain rounded-lg border"
+              />
+            )}
             <input
               ref={fileInputRef}
               type="file"

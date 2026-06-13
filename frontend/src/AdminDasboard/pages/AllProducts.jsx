@@ -69,7 +69,7 @@ function AllProducts() {
   };
 
   const updateProduct = (prodId) => {
-    navigate(`/update/${prodId}`);
+    navigate(`update/${prodId}`);
   };
 
   return (

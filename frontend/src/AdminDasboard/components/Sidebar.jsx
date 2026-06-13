@@ -1,33 +1,10 @@
 import { Package } from "lucide-react";
 import React from "react";
 
-import {
-  FaBox,
-  FaPlus,
-  FaShoppingCart,
-  FaUsers,
-  FaTimes,
-} from "react-icons/fa";
+import { FaShoppingCart, FaUsers, FaTimes } from "react-icons/fa";
+import { adminMenuItems } from "../../constans";
 
 function Sidebar({ activePage, setActivePage, openSidebar, setOpenSidebar }) {
-  const menuItems = [
-    {
-      title: "Dashboard",
-      icon: "",
-      value: "dashboard",
-    },
-    {
-      title: "Create Product",
-      icon: <FaPlus />,
-      value: "create-product",
-    },
-    {
-      title: "All Products",
-      icon: <FaBox />,
-      value: "all-products",
-    },
-  ];
-
   return (
     <div
       className={`
@@ -55,30 +32,35 @@ function Sidebar({ activePage, setActivePage, openSidebar, setOpenSidebar }) {
 
       {/* MENU */}
       <div className="flex flex-col gap-3">
-        {menuItems.map((item) => (
-          <button
-            key={item.value}
-            onClick={() => {
-              setActivePage(item.value);
-              setOpenSidebar(false);
-            }}
-            className={`
-              flex items-center gap-4
-              px-5 py-4 rounded-xl
-              transition-all duration-200
-              
-              ${
-                activePage === item.value
-                  ? "bg-primary text-light"
-                  : "hover:bg-primary/20 text-muted hover:text-light"
-              }
-            `}
-          >
-            <span>{item.icon}</span>
+        {adminMenuItems.map((item) => {
+          const Icon = item.icon;
 
-            <span>{item.title}</span>
-          </button>
-        ))}
+          return (
+            <button
+              key={item.value}
+              onClick={() => {
+                setActivePage(item.value);
+                setOpenSidebar(false);
+              }}
+              className={`
+        flex items-center gap-4
+        px-5 py-4 rounded-xl
+        transition-all duration-200
+        ${
+          activePage === item.value
+            ? "bg-primary text-light"
+            : "hover:bg-primary/20 text-muted hover:text-light"
+        }
+      `}
+            >
+              <span>
+                <Icon size={18} />
+              </span>
+
+              <span>{item.title}</span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );

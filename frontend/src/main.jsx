@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         element: <ProductsCreate />,
       },
       {
-        path: "update/:id",
+        path: "myAdmin/update/:id",
         element: <UpdateProductForm />,
       },
       {

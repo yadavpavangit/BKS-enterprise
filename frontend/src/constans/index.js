@@ -1,3 +1,5 @@
+import { FaBox, FaPlus, FaTachometerAlt } from "react-icons/fa";
+
 export const featureProducts = [
   {
     id: 1,
@@ -102,5 +104,23 @@ export const plans = [
       "Kitchen design",
     ],
     isFeatured: false,
+  },
+];
+
+export const adminMenuItems = [
+  {
+    title: "Dashboard",
+    icon: FaTachometerAlt,
+    value: "dashboard",
+  },
+  {
+    title: "Create Product",
+    icon: FaPlus,
+    value: "create-product",
+  },
+  {
+    title: "All Products",
+    icon: FaBox,
+    value: "all-products",
   },
 ];
